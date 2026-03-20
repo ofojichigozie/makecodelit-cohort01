@@ -1,5 +1,32 @@
 const productsContainerElem = document.getElementById("productsContainer");
 
+async function deleteProduct(productId) {
+  const answer = confirm("Do you really wanna delete this product?");
+
+  if (!answer) {
+    return; // Early return
+  }
+
+  // The codes in comment below do thesame thing:
+  // "https://fakestoreapi.com/products/" + productId = String Concatenation
+  // `https://fakestoreapi.com/products/${productId}` = STring Interpolation
+
+  try {
+    const response = await fetch(`https://fakestoreapi.com/products/${productId}`, {
+      method: "DELETE"
+    });
+
+    if (response.ok) {
+      alert("The product was deleted successfully");
+      window.location.reload();
+    } else {
+      alert("Error deleting product. Please try again!");
+    }
+  } catch (error) {
+    console.error("An error occured", error);
+  }
+}
+
 async function getAndDisplayProducts() {
   try {
     // Making API request to get products
@@ -26,6 +53,10 @@ async function getAndDisplayProducts() {
         <h3 class="itemTitle">${currentProduct.title}</h3>
         <p class="itemDesc">${currentProduct.description}</p>
         <h2 class="itemPrice">${currentProduct.price}</h2>
+        <div>
+          <a href="edit-product.html?id=${currentProduct.id}">Edit Product</a>
+          <button onclick="deleteProduct(${currentProduct.id})">Delete Product</button>
+        </div>
       `;
       productsContainerElem.appendChild(itemContainerElem);
     }
