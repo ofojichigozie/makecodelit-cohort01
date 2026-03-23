@@ -54,7 +54,7 @@ async function getAndDisplayProducts() {
         <p class="itemDesc">${currentProduct.description}</p>
         <h2 class="itemPrice">${currentProduct.price}</h2>
         <div>
-          <a href="edit-product.html?id=${currentProduct.id}">Edit Product</a>
+          <a href="edit-product?id=${currentProduct.id}" target="_blank">Edit Product</a>
           <button onclick="deleteProduct(${currentProduct.id})">Delete Product</button>
         </div>
       `;
