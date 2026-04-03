@@ -23,6 +23,7 @@ async function fetchPostsFromBackend() {
 function displayPostsOnUI(posts) {
   const postsLength = posts.length;
 
+  // Clear old posts from UI
   postsContainerElem.innerHTML = "";
 
   for (let index = 0; index < postsLength; index++) {
@@ -44,7 +45,7 @@ function displayPostsOnUI(posts) {
 // IIFE
 (async function () {
   try {
-     allPosts = await fetchPostsFromBackend();
+    allPosts = await fetchPostsFromBackend();
 
     displayPostsOnUI(allPosts);
   } catch (e) {
@@ -71,9 +72,7 @@ searchInputElem.addEventListener("input", async function (e) {
 
   // Display the filtered posts
   displayPostsOnUI(filteredPosts);
-
 })
-
 
 // const users = [
 //   { fn: "Bola", sn: "Tinubu" },
