@@ -19,8 +19,7 @@ const students = [
     height: 5.7,
     gender: "Male",
     weeklyStipend: 20000,
-    isWorkingClass: true,
-    regNum: null
+    isWorkingClass: true
   },
   {
     fullname: "Ahmed Bala",
@@ -73,17 +72,17 @@ const transformedStudents = students.map(function (student) {
   innerStudent.fullname = innerStudent.fullname.toUpperCase();
   return innerStudent;
 });
-// console.log(transformedStudents);
+// console.log({transformedStudents, students});
 
 // filter => loops through and return a new array that matches a condition
-const filteredStudentd = students.filter(function (student) {
+const filteredStudents = students.filter(function (student) {
   return student.age > 25;
 });
-// console.log(filteredStudentd);
+// console.log(filteredStudents);
 
 // find => loops through and return the first element matching a condition
 const foundStudent = students.find(function (student) {
-  return student.fullname.indexOf("Temi") !== -1;
+  return student.fullname.indexOf("Okafor") !== -1;
 });
 // console.log(foundStudent);
 
@@ -91,4 +90,4 @@ const foundStudent = students.find(function (student) {
 const totalWeeklyStipend = students.reduce(function(accumulator, student){
   return accumulator + student.weeklyStipend;
 }, 0);
-console.log(totalWeeklyStipend.toLocaleString());
+// console.log(totalWeeklyStipend.toLocaleString());
